@@ -24,6 +24,9 @@ export default {
 
 <style scoped>
 #footer-color{
-  background-color: #48c1b8
+  background-color: #48c1b8;
+  flex-shrink: 0; /* Prevent shrinking */
+  height: auto;   /* Let height depend on content */
+  padding: 16px;
 }
 </style>
