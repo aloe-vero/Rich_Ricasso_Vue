@@ -6,8 +6,19 @@
 import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/styles";
 
-import { createVuetify } from "vuetify";
+
 
 // Aucune configuration de thème ici
 
-export default createVuetify();
+import { createVuetify } from 'vuetify'
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
+
+export default createVuetify({
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi,
+    },
+  },
+})

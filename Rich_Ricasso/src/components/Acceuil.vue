@@ -1,33 +1,35 @@
 <template>
-    <ParallaxBackground :image-src="imageSrc" height="90vh">
-        <v-container>
-
-            <AboutRich />
-        </v-container>
-
-    </ParallaxBackground>
-
-    <Showcase />
-
+  <v-container id="acceuil-display">
+    <v-row dense no-gutters>
+      <v-col cols="5">
+        <AboutRich />
+      </v-col>
+      <v-col >
+        <Showcase />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
-import InfolettrePopUp from './InfolettrePopUp.vue';
-import Produits from './Produits.vue';
-import ParallaxBackground from "./ParallaxBackground.vue";
-import HelloWorld from './HelloWorld.vue';
-import Carousel from './Carousel.vue';
 import Showcase from './Showcase.vue';
-const imageSrc = '/src/assets/bg_img.jpeg';
+import AboutRich from './AboutRich.vue';
 </script>
 
-<style>
-.parallax-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
+<style scoped>
+#acceuil-display {
+  margin-top: 80px;
+  display: flex;
+  width: 100%;
+}
+
+v-row {
+  margin: 0;
+  padding: 0;
+}
+
+v-col {
+  padding: 0;
+  margin: 0;
 }
 </style>

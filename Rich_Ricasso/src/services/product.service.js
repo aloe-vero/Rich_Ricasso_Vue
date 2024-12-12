@@ -1,6 +1,7 @@
-import Product from "@/models/Product";
 
-export const fetchProducts = async () => {
+import Produit from "@/models/Produit";
+
+export const fetchProduits = async () => {
   try {
     const response = await fetch(`http://localhost:4208/api/produits`);
 
@@ -22,12 +23,12 @@ export const fetchProducts = async () => {
   }
 };
 
-export const fetchProduct = async (id) => {
+export const fetchProduit = async (id) => {
   try {
-    const response = await fetch(`http://localhost:4208/api/produits${id}`);
+    const response = await fetch(`http://localhost:4208/api/produits/${id}`);
     const data = await response.json();
     console.log("DB 88777RAND:", id, data);
-    return new Product(id, data);
+    return new Produit(id, data);
   } catch (error) {
     console.error(`Erreur lors de la récupération du Produits ${id} :`, error);
   }
