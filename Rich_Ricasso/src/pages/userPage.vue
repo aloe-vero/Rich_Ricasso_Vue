@@ -4,10 +4,21 @@
             <p>Prenom: {{ utilisateur.prenom }}</p>
             <p>Nom: {{ utilisateur.nom }}</p>
             <p>Email: {{ utilisateur.courriel }}</p>
-            <v-card-actions>
-                <v-btn>Change Password</v-btn>
-            </v-card-actions>
 
+                <v-btn  class="tab"
+                        variant="plain"
+                        :ripple="false"
+                        active-color="#800080">Change Password</v-btn>
+
+          <v-btn
+            class="tab"
+            variant="plain"
+            :ripple="false"
+            active-color="#800080"
+            @click="handleLogout"
+          >
+            Logout
+          </v-btn>
         </v-card>
     </v-container>
 </template>
@@ -15,18 +26,28 @@
 
 import { ref, onMounted } from "vue";
 import {fetchUtilisateur} from "@/services/utilisateur.service";
-
+import { useRoute } from 'vue-router';
+import { useUserStore } from "@/stores/user";
+import router from "@/router";
 
 let utilisateur = ref({})
 
+const route = useRoute();
+const userId = route.params.id;
+const userStore = useUserStore();
+
+
+const handleLogout = () => {
+  userStore.logout();
+  router.push("/login");
+};
+
 onMounted(() => {
-  fetchUtilisateur(28).then((data)=>{
-      console.log(data);
+  fetchUtilisateur(userId).then((data)=>{
       utilisateur.value = data;
     }
 
   );
-
 });
 
 

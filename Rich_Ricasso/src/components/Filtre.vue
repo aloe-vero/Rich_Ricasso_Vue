@@ -6,7 +6,6 @@
   <v-expansion-panels id="filtre">
     <v-expansion-panel
       title="Filtre"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima"
     ><v-expansion-panel-text>
 
     <div id="cbx-group">

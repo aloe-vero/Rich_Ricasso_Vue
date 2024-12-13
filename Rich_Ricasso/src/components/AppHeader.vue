@@ -3,21 +3,43 @@
     <div class="left-side">
       <v-img class="logo" src="@/assets/img/logov3.png" width="150"></v-img>
 
-    <div class="tabs">
-      <v-btn class="tab" variant="plain"  :ripple="false" active-color="#800080" to="/">Acceuil</v-btn>
-      <v-btn class="tab" variant="plain"  :ripple="false" active-color="#800080" to="/produits">Produits</v-btn>
+      <div class="tabs">
+        <v-btn class="tab" variant="plain" :ripple="false" active-color="#800080" to="/">Acceuil</v-btn>
+        <v-btn class="tab" variant="plain" :ripple="false" active-color="#800080" to="/produits">Produits</v-btn>
+      </div>
     </div>
-    </div>
-    <div class="icon-right" >
-     <v-btn class="tab" variant="plain"  :ripple="false" active-color="#800080" to="/login">Log in</v-btn>
+    <div class="icon-right">
+      <v-btn class="tab" variant="plain" :ripple="false" active-color="#800080" to="/panier">Panier</v-btn>
+      <v-btn
+        v-if="!userStore.isLoggedIn"
+        class="tab"
+        variant="plain"
+        :ripple="false"
+        active-color="#800080"
+        to="/login"
+      >
+        Log in
+      </v-btn>
+      <v-btn
+        v-else
+        class="tab"
+        variant="plain"
+        :ripple="false"
+        active-color="#800080"
+        :to="`/users/${userId}`"
+      >
+        Account
+      </v-btn>
     </div>
   </header>
 </template>
 
-<script>
+<script setup>
+import { useUserStore } from '@/stores/user';
+const userStore = useUserStore(); // Access the store
+const userId = userStore.userId;
 
 </script>
-
 <style scoped>
 
 .app-header {

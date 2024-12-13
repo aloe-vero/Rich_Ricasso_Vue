@@ -17,7 +17,7 @@ export const inscrireAbonnement = async (courriel) => {
     }
 
     const result = await response.json();
-    console.log(result)// Traiter la réponse JSON (si votre API retourne JSON)
+    console.log(result)// Traiter la réponse JSON
     return {
       success: true,
       message: result.message,

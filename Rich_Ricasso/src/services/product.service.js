@@ -12,7 +12,7 @@ export const fetchProduits = async () => {
     const data = await response.json();
     return {
       success: true,
-      products: data, // Use plural naming for clarity
+      products: data,
     };
   } catch (error) {
     console.error(`Erreur lors de la récupération des produits :`, error);

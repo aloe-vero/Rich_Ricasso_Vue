@@ -10,14 +10,17 @@
       ></v-text-field>
       <v-text-field
         v-model="nom"
+        density="compact" variant="outlined"
         label="Nom"
       ></v-text-field>
       <v-text-field
         v-model="password"
+        density="compact" variant="outlined"
         label="Password"
       ></v-text-field>
       <v-text-field
         v-model="courriel"
+        density="compact" variant="outlined"
         label="Email"
       ></v-text-field>
       <v-btn class="mt-2" type="submit" block >Create Account</v-btn>
@@ -29,6 +32,8 @@
 <script setup>
 import { ref } from "vue";
 import { createUtilisateur } from "@/services/utilisateur.service";
+import {useRouter} from "vue-router";
+const router = useRouter();
 
 const courriel = ref("");
 const prenom = ref("");
@@ -36,7 +41,7 @@ const nom = ref("");
 const password = ref("");
 
 const handleSubmit = async () => {
-  // Prepare the data to be sent
+
   const data = JSON.stringify({
     prenom: prenom.value,
     nom: nom.value,
@@ -45,17 +50,17 @@ const handleSubmit = async () => {
   });
 
   try {
-    // Call the function to send data to the API
+
     const response = await createUtilisateur(data);
 
     if (response.success) {
-      alert(response.message || "Utilisateur créé avec succès !");
+      await router.push(`/login`);
     } else {
-      alert(response.message || "Erreur lors de la création de l'utilisateur.");
+     console.log("Erreur lors de la création de l'utilisateur.");
     }
   } catch (error) {
     console.error("Erreur lors de la soumission :", error);
-    alert("Une erreur est survenue lors de la soumission du formulaire.");
+
   }
 };
 </script>
